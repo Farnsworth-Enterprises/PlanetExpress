@@ -18,6 +18,11 @@ const checkJwt = jwt.expressjwt({
 	audience: process.env.CLIENT_ID,
 	issuer: process.env.ISSUER_BASE_URL,
 	algorithms: ["RS256"],
+
+	// Optional: Store the decoded token in the request object
+	// and expose it to the API routes
+	requestProperty: "token",
+	credentialsRequired: false,
 });
 
 module.exports = { checkJwt };

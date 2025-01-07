@@ -3,7 +3,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const path = require("path");
-const { checkJwt } = require("./src/middleware/auth");
 
 const { auth, requiresAuth } = require("express-openid-connect");
 
@@ -21,8 +20,13 @@ app.get("/", (req, res) => {
 	res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
+// test route for user data **DELETE LATER**
 app.get("/profile", requiresAuth(), (req, res) => {
-	res.send(JSON.stringify(req.oidc.user));
+	res.send({
+		idTkn: req.oidc.idToken,
+		user: req.oidc.user,
+		roles: req.oidc.accessToken,
+	});
 });
 
 // Global middleware
@@ -31,6 +35,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API routes
 const apiRouter = require("./src/routes/index");
+
 app.use("/api", apiRouter);
 
 // Catch-all for unknown API routes

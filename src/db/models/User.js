@@ -4,7 +4,7 @@ const User = sequelize.define("User", {
 	first_name: DataTypes.STRING,
 	last_name: DataTypes.STRING,
 	email: DataTypes.STRING,
-	password: DataTypes.STRING,
+	sub: DataTypes.STRING,
 	address: DataTypes.STRING,
 	role: DataTypes.ENUM("customer", "crew", "admin"),
 });

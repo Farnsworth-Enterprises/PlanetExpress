@@ -1,14 +1,12 @@
 const { Router } = require("express");
-const { createUser } = require("../controllers/userController");
-const { checkJwt } = require("../middleware/auth");
+const { createUser, getUser } = require("../controllers/userController");
+const { requiresAuth } = require("express-openid-connect");
 
 const userRouter = Router();
 
 // Define routes
-userRouter.get("/", (_, res) => {
-	res.send({ message: "User route working!" });
-});
+userRouter.get("/", requiresAuth(), getUser);
 
-userRouter.post("/", checkJwt, createUser);
+userRouter.post("/", requiresAuth(), createUser);
 
 module.exports = { userRouter };
