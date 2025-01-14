@@ -1,5 +1,7 @@
 # Planet Express
 
+![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg)
+
 ## Shipments - Backend Application
 
 Multiverse Project - A service API backend where internal consumers can directly create, view, and manage shipments without any intermediary service over the internet. The goal was to develop an easy to use web-based interface where customers can create shipments, and view their shipments. Users are only allowed to create and view their own shipments. Admins have the ability to create, update, delete and view all shipments.
@@ -9,8 +11,6 @@ Multiverse Project - A service API backend where internal consumers can directly
 1. `npm install`
 2. `npm run seed`
 3. `npm run dev`
-
-![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg)
 
 ## API Documentation
 
