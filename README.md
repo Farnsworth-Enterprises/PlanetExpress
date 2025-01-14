@@ -1,6 +1,6 @@
 # Planet Express
 
-<p> align="center" ![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg) </p>
+<p align="center"> ![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg) </p>
 
 ## Shipments - Backend Application
 
