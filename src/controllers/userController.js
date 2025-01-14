@@ -47,7 +47,7 @@ const createUser = async (req, res, next) => {
 			});
 		}
 
-		const { sub, email, name, updated_at } = req.oidc.user;
+		const { sub, email, name } = req.oidc.user;
 		const [user, created] = await User.findOrCreate({
 			where: { email },
 			defaults: {

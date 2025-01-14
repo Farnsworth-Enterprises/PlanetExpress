@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+const { findOrCreateUser } = require("./src/middleware/findOrCreateUser");
+
 const { auth, requiresAuth } = require("express-openid-connect");
 
 const config = {
@@ -16,16 +18,16 @@ const config = {
 };
 
 app.use(auth(config));
-app.get("/", (req, res) => {
+
+// test route for auth **DELETE LATER**
+app.get("/", findOrCreateUser, (req, res) => {
 	res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
 });
 
 // test route for user data **DELETE LATER**
 app.get("/profile", requiresAuth(), (req, res) => {
 	res.send({
-		idTkn: req.oidc.idToken,
 		user: req.oidc.user,
-		roles: req.oidc.accessToken,
 	});
 });
 
