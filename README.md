@@ -10,7 +10,7 @@ Multiverse Project - A service API backend where internal consumers can directly
 2. `npm run seed`
 3. `npm run dev`
 
-![image](https://i.pinimg.com/originals/fd/07/d6/fd07d6d9b563b237e757af7dded74553.jpg)
+![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg)
 
 ## API Documentation
 
