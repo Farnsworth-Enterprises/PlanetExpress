@@ -1,4 +1,3 @@
-# Planet Express
 <h1 align="center"> Planet Express</h1>
 
 <p align="center">
