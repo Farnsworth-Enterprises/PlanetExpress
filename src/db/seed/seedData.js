@@ -3,7 +3,7 @@ const users = [
 		first_name: "Hubert",
 		last_name: "Farnsworth",
 		email: "h.farnsworth@planex.com",
-		password: "V@riousLengthsOfWire!",
+		sub: "V@riousLengthsOfWire!",
 		address: "72nd Street New New York, NY, 11111, Earth",
 		role: "admin",
 	},

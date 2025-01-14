@@ -1,6 +1,35 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const path = require("path");
+
+const { findOrCreateUser } = require("./src/middleware/findOrCreateUser");
+
+const { auth, requiresAuth } = require("express-openid-connect");
+
+const config = {
+	authRequired: false,
+	auth0Logout: true,
+	secret: process.env.AUTH0_SECRET,
+	baseURL: process.env.BASE_URL,
+	clientID: process.env.CLIENT_ID,
+	issuerBaseURL: process.env.ISSUER_BASE_URL,
+};
+
+app.use(auth(config));
+
+// test route for auth **DELETE LATER**
+app.get("/", findOrCreateUser, (req, res) => {
+	res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+});
+
+// test route for user data **DELETE LATER**
+app.get("/profile", requiresAuth(), (req, res) => {
+	res.send({
+		user: req.oidc.user,
+	});
+});
 
 // Global middleware
 app.use(express.json());
@@ -8,6 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // API routes
 const apiRouter = require("./src/routes/index");
+
 app.use("/api", apiRouter);
 
 // Catch-all for unknown API routes
