@@ -42,12 +42,13 @@ const updateShipment = async (req, res, next) => {
 	try {
 		const shipmentId = req.params.id;
 		const findShipment = await Shipment.findByPk(shipmentId);
-		if (!findShipment)
+		if (!findShipment) {
 			return res
 				.status(404)
 				.json({ success: false, message: "Shipment not found" });
+		}
 		const updatedShipment = await findShipment.update(req.body);
-		res.status(200).json({ success: true, data: updatedShipment });
+		return res.status(200).json({ success: true, data: updatedShipment });
 	} catch (error) {
 		console.error(error);
 		next(error);
