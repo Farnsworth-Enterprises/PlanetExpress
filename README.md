@@ -1,9 +1,7 @@
 # Planet Express
 
-<div align="center"> ![image](https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg) </div>
-
 <p align="center">
-  <img width="460" height="300" src="https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg">
+  <img width="460" height="460" src="https://i.pinimg.com/736x/6d/24/ca/6d24ca1179de2029054c346a7febb40b.jpg">
 </p>
 
 ## Shipments - Backend Application
