@@ -2,7 +2,7 @@
 
 ## Shipments - Backend Application
 
-Multiverse Project - A service API backend where internal consumers can directly create, view, and manage shipments without any intermediary service over the internet. The goal was to develop an easy to use web-based interface where customers can create shipments, and view view their shipments. Users are only be allowed to create and view their own shipments. Admins have the ability to create, update, delete and view all shipments.
+Multiverse Project - A service API backend where internal consumers can directly create, view, and manage shipments without any intermediary service over the internet. The goal was to develop an easy to use web-based interface where customers can create shipments, and view their shipments. Users are only allowed to create and view their own shipments. Admins have the ability to create, update, delete and view all shipments.
 
 ## Getting Started
 
