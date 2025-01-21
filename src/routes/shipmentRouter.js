@@ -14,7 +14,8 @@ const shipmentRouter = Router();
 // GET All Shipments
 // Get all shipments
 // Private route - admin role only
-shipmentRouter.get("/", findUserRole(["admin"]), getAllShipments);
+// Private route - customer role only
+shipmentRouter.get("/", findUserRole(["admin", "crew", "customer"]), getAllShipments);
 
 // GET One Shipment
 // Get one shipment by ID
@@ -30,7 +31,6 @@ shipmentRouter.post("/", requiresAuth(), postShipment);
 // PUT (Update) a Shipment
 // Update a shipment by ID
 // Private route - admin and crew roles only
-// NOT UPDATING with middleware********************
 shipmentRouter.put("/:id", findUserRole(["admin", "crew"]), updateShipment);
 
 // DELETE a Shipment
