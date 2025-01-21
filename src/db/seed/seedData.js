@@ -3,7 +3,7 @@ const users = [
 		first_name: "Hubert",
 		last_name: "Farnsworth",
 		email: "h.farnsworth@planex.com",
-		sub: "V@riousLengthsOfWire!",
+		sub: "auth0|679004172ac64d14e0a3413b", //"V@riousLengths0fWire!",
 		address: "72nd Street New New York, NY, 11111, Earth",
 		role: "admin",
 	},
@@ -12,7 +12,7 @@ const users = [
 const shipments = [
 	{
 		customer_id: 1,
-		 tracking_number: 22_000_001,
+		tracking_number: 22_000_001,
 		sender_details:
 			"Hubert Farnsworth 72nd Street New New York, NY, 11111, Earth",
 		receiver_details:
@@ -43,3 +43,7 @@ module.exports = {
 	users,
 	shipments,
 };
+
+
+// DeliveryB0y* p.fry@planex.com
+// B3nderisgreat! b.rodriguez@planex.com
