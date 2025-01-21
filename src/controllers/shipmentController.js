@@ -2,10 +2,26 @@
 const { Shipment } = require("../db/models");
 
 // GET All Shipments
-const getAllShipments = async (_, res, next) => {
+const getAllShipments = async (req, res, next) => {
 	try {
-		const shipments = await Shipment.findAll();
-		res.status(200).json({ success: true, data: shipments });
+		let shipments;
+
+		// Apply filter for customers
+		if (req.user.role == "customer") {
+			shipments = await Shipment.findAll({
+				where: {customer_id: req.user.id},
+			});
+		} else {
+			// Admins get all shipments
+			shipments = await Shipment.findAll();
+		}
+
+		return res.status(200).json({
+			success: true,
+			data: shipments,
+		});
+		// const shipments = await Shipment.findAll();
+		// res.status(200).json({ success: true, data: shipments });
 	} catch (error) {
 		next(error);
 	}
