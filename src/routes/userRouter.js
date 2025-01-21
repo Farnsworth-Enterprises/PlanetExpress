@@ -5,6 +5,7 @@ const {
 	getUser,
 	getUserById,
 	updateUser,
+    deleteUser
 } = require("../controllers/userController");
 
 const { requiresAuth } = require("express-openid-connect");
@@ -39,6 +40,10 @@ userRouter.put(
 // DELETE /api/user/:id
 // Delete user by ID
 // Private route - admin roles only
-// userRouter.delete("/:id", requiresAuth(), deleteUser);
+userRouter.delete(
+	"/:id",
+	[requiresAuth(), findUserRole(["admin"])],
+	deleteUser
+);
 
 module.exports = { userRouter };

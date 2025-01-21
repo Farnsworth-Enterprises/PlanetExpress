@@ -109,9 +109,14 @@ const updateUser = async (req, res, next) => {
 		next(error);
 	}
 };
+
+const deleteUser = 
+
+
 module.exports = {
 	getUser,
 	createUser,
 	getUserById,
 	updateUser,
+	deleteUser,
 };

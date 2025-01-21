@@ -17,6 +17,7 @@ const findUserRole = (role) => {
 			});
 			if (role.includes(user.role)) {
 				req.user = {
+					id: user.id,
 					email: user.email,
 					role: user.role,
 				}
