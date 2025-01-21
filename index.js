@@ -19,16 +19,8 @@ const config = {
 
 app.use(auth(config));
 
-// test route for auth **DELETE LATER**
 app.get("/", findOrCreateUser, (req, res) => {
 	res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
-
-// test route for user data **DELETE LATER**
-app.get("/profile", requiresAuth(), (req, res) => {
-	res.send({
-		user: req.oidc.user,
-	});
 });
 
 // Global middleware
