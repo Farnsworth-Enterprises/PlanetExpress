@@ -1,6 +1,15 @@
 const { Router } = require("express");
-const { createUser, getUser } = require("../controllers/userController");
+
+const {
+	createUser,
+	getUser,
+	getUserById,
+	updateUser,
+    deleteUser
+} = require("../controllers/userController");
+
 const { requiresAuth } = require("express-openid-connect");
+const { findUserRole } = require("../middleware/getUserRole");
 
 const userRouter = Router();
 
@@ -12,21 +21,29 @@ userRouter.get("/", requiresAuth(), getUser);
 // POST /api/user
 // Create a new user
 // Private route - admin roles only
-userRouter.post("/", requiresAuth(), createUser);
+userRouter.post("/", [requiresAuth(), findUserRole(["admin"])], createUser);
 
 // GET /api/user/:id
 // Get user by ID
 // Private route - admin roles only
-// userRouter.get("/:id", requiresAuth(), getUserById);
+userRouter.get("/:id", [requiresAuth(), findUserRole(["admin"])], getUserById);
 
 // PUT /api/user/:id
 // Update user by ID
 // Private route - admin roles only or user updating own account
-// userRouter.put("/:id", requiresAuth(), updateUser);
+userRouter.put(
+	"/:id",
+	[requiresAuth(), findUserRole(["admin", "customer"])],
+	updateUser
+);
 
 // DELETE /api/user/:id
 // Delete user by ID
 // Private route - admin roles only
-// userRouter.delete("/:id", requiresAuth(), deleteUser);
+userRouter.delete(
+	"/:id",
+	[requiresAuth(), findUserRole(["admin"])],
+	deleteUser
+);
 
 module.exports = { userRouter };
