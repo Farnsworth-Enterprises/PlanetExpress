@@ -77,8 +77,41 @@ const getUserById = async (req, res, next) => {
 	}
 };
 
+const updateUser = async (req, res, next) => {
+	try {
+		const user = await User.findByPk(req.params.id);
+		if (!user) {
+			return res.status(404).json({
+				success: false,
+				message: "User not found",
+			});
+		}
+
+		if (req.user.email !== user.email && req.user.role !== "admin") {
+			return res.status(401).json({
+				success: false,
+				message: "User not authorized",
+			});
+		}
+
+		let filteredBody;
+
+		if (req.user.role === "customer") {
+			const { role, ...rest } = req.body;
+			filteredBody = rest;
+		} else {
+			filteredBody = req.body;
+		}
+
+		const updatedUser = await user.update(filteredBody);
+		res.json({ success: true, data: updatedUser });
+	} catch (error) {
+		next(error);
+	}
+};
 module.exports = {
 	getUser,
 	createUser,
-	getUserById
+	getUserById,
+	updateUser,
 };

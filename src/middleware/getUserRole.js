@@ -16,6 +16,10 @@ const findUserRole = (role) => {
 				where: { email: email },
 			});
 			if (role.includes(user.role)) {
+				req.user = {
+					email: user.email,
+					role: user.role,
+				}
 				next();
 			} else {
 				return res.status(401).json({
