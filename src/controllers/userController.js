@@ -1,7 +1,7 @@
 // Desc: User Controller
 const { User } = require("../db/models");
 
-const getUser = async (req, res, next) => {
+const getUsers = async (req, res, next) => {
 	try {
 		if (!req.oidc.user) {
 			return res.status(401).json({
@@ -110,11 +110,25 @@ const updateUser = async (req, res, next) => {
 	}
 };
 
-const deleteUser = 
+const deleteUser = async (req, res, next) => {
+	try {
+		const user = await User.findByPk(req.params.id);
+		if (!user) {
+			return res.status(404).json({
+				success: false,
+				message: "User not found",
+			});
+		}
 
+		await user.destroy();
+		res.json({ success: true, message: "User deleted" });
+	} catch (error) {
+		next(error);
+	}
+};
 
 module.exports = {
-	getUser,
+	getUsers,
 	createUser,
 	getUserById,
 	updateUser,
